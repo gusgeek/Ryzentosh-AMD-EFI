@@ -1,66 +1,15 @@
-# Version Español
-## EFI Valido para equipos con X570 de AMD
-Este Repositorio esta pensado para brindar un ejemplo de la configuracion de EFI que se requiere para ejecutar macOS Catalina / Big Sur en un PC con AMD Ryzen y X570 de motherboard. 
-1. Antes que nada, siga los pasos de como crear un USB Bootable con OpenCore desde [Aqui](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html#downloading-macos)
-2. Luego de esto, utilice la carpeta EFI de este repositorio, segun la version que valla a instalar de macOS descargada desde OpenCore y cree un ID Serializado, usando [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) indicando que tiene un `iMacPro1,1`
 
-    2a. Inicie _GenSMBIOS_, seleccione opcion 3, ingrese _iMacPro1,1_ y tendra este resultado:
-   ```
-      #######################################################
-     #              iMacPro1,1 SMBIOS Info                 #
-    #######################################################
+<p align="center">
+<img src="https://lh3.googleusercontent.com/proxy/G_V64-BUJ-F76tcdTtLD8I9h0NC7DE8rAmQ30EzKqpQ0K7wl2AxHFDzh9Kiuyjx9c-xrJdWOTcWY4UwT_K8QTB4vlwnkGMSp9261n9QurpF6WTDKbHbJLIzj5TBJAasntKHknN_r" width="200">
+</p>
 
-    Type:         iMacPro1,1
-    Serial:       C02V8QZFHX87
-    Board Serial: C02734200J9JG36A8
-    SmUUID:       0EAA2FD4-34CD-4588-97B3-4FFAD397F669
+# 
+<p align="center">
+EFI Asegurado para Inicializar macOS Big Sur / Catalina en AMD Ryzen
+</p>
+  
+<p align="center">
+  <a href="https://github.com/gusgeek/Ryzentosh-AMD-EFI/wiki"> Ver Wiki </a> | <a href="https://github.com/gusgeek/Ryzentosh-AMD-EFI/issues/new"> Ofrecer una Idea </a> | <a href="https://github.com/gusgeek/Ryzentosh-AMD-EFI/releases/latest"> Obtener </a>
+  </strong>
+</p>
 
-    Press [enter] to return...
-    ```
-    Ahora, puede usar cualquier valor de GenSMBIOS, pero si desea que iMessage y FaceTime funcionen, necesita seriales reconocidos por Apple porque la criptografía de iMessage se basa en estos valores. La única forma de obtener una serie válida es generar un montón de ellos a la vez (ingrese _iMacPro1,1_ en la opción 3 para generar los números). Luego Configure las siguientes claves en **PlatformInfo** -> **Generic** ubicado en config.plist (dentro de EFI > OC):
-    
-   1. **SystemProductName** a `iMacPro1,1`
-   2. **SystemSerialNumber** al valor generado por _GenSMBIOS_
-   3. **SystemUUID** al valor generado por _GenSMBIOS_
-   4. **MLB ** al valor generado por _GenSMBIOS_ (**Board Serial**)
-   5. **ROM** al valor de su dirección MAC de Ethernet ([más aquí] (https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#platforminfo))
-
-
-Luego de esto, reinici y seleccione "NO NAME" DMG en las opciones de booteo, luego de esto iniciara la instalacion de Mac sin complicaciones, recuerde formatear el disco en AFPS para mejor funcionamiento si tiene disco solido. 
-
-***RECUERDE*** Cada vez que inicie la PC durante la instalacion tendra que ejecutar desde el Pendrive, para que esto no suceda mas adelante y dependa de el, use [MountEFI](https://github.com/corpnewt/MountEFI) para montar el EFI del disco donde instalo Mac y copiar la carpeta EFI que creeo y funciona de su pendrive al disco, luego de esto reinicie y su PC sera un verdadero Ryzentosh. 
-
-
-
-# English Version 
-## EFI Valid for computers with AMD X570
-This Repository is intended to provide an example of the EFI configuration required to run macOS Catalina / Big Sur on a PC with an AMD Ryzen and X570 motherboard.
-1. First of all, follow the steps of how to create a Bootable USB with OpenCore from [Here] (https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html#downloading- macos)
-2. After this, use the EFI folder of this repository, according to the version you are going to install of macOS downloaded from OpenCore and create a Serialized ID, using [GenSMBIOS] (https://github.com/corpnewt/GenSMBIOS) indicating which has an `iMacPro1,1`
-
-    2a. Start _GenSMBIOS_, select option 3, enter _iMacPro1,1_ and you will get this result:
-
-    ```
-      #######################################################
-     #              iMacPro1,1 SMBIOS Info                 #
-    #######################################################
-
-    Type:         iMacPro1,1
-    Serial:       C02V8QZFHX87
-    Board Serial: C02734200J9JG36A8
-    SmUUID:       0EAA2FD4-34CD-4588-97B3-4FFAD397F669
-
-    Press [enter] to return...
-    ```
-    Now, you can use any GenSMBIOS value, but if you want iMessage and FaceTime to work, you need Apple-recognized serials because iMessage crypto is based on these values. The only way to get a valid string is to generate a bunch of them at once (enter _iMacPro1,1_ in option 3 to generate the numbers). Then set the following keys in **PlatformInfo** -> **Generic** located in config.plist (inside EFI> OC):
-    
-   1. **SystemProductName** to `iMacPro1,1`
-   2. **SystemSerialNumber** to the value generated by _GenSMBIOS_
-   3. **SystemUUID** to the value generated by _GenSMBIOS_
-   4. **MLB** to the value generated by _GenSMBIOS_ (**Board Serial**)
-   5. **ROM** to the value of your Ethernet MAC address ([more here](https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#platforminfo))
-
-
-After this, reboot and select "NO NAME" DMG in the boot options, after that it will start the Mac installation without complications, remember to format the disk in AFPS for better performance if you have a solid disk.
-
-***REMEMBER*** Every time you start the PC during the installation you will have to run from the Pendrive, so that this does not happen later and depends on it, use [MountEFI](https://github.com/corpnewt/MountEFI) for the EFI of the disk where I install Mac and copy the EFI folder that I create and work from your pendrive to the disk, after this restart and your PC will be a true Ryzentosh.
