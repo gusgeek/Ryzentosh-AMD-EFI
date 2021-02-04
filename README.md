@@ -1,7 +1,4 @@
 
-<p align="center">
-<img src="https://lh3.googleusercontent.com/proxy/G_V64-BUJ-F76tcdTtLD8I9h0NC7DE8rAmQ30EzKqpQ0K7wl2AxHFDzh9Kiuyjx9c-xrJdWOTcWY4UwT_K8QTB4vlwnkGMSp9261n9QurpF6WTDKbHbJLIzj5TBJAasntKHknN_r" width="200">
-</p>
 
 # 
 <p align="center">
